@@ -1,5 +1,7 @@
 from app import app
 from .data_reader import DataReader
+from .data_calculator import DataCalculator
+from .report_generator import ReportGenerator
 import os
 
 data_reader = DataReader()
@@ -14,6 +16,9 @@ def index():
 
 @app.route("/weather-summary/<int:year>")
 def weather_summary_by_year(year):
+    calculation = DataCalculator.calculate_weather_by_year(ALL_DATA, year)
+    report = ReportGenerator.generate_weather_report_by_year(calculation)
+    print(report)
     return f"Viewing Note {year}"
 
 

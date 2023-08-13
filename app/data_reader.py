@@ -48,6 +48,13 @@ class DataReader:
                         events,
                         wind_directions,
                     ) = line.strip().split(",")
+                    try:
+                        max_temp = int(max_temp)
+                        min_temp = int(min_temp)
+                        mean_humidity = int(mean_humidity)
+                    except ValueError:
+                        # If a field is missing then discard the current row
+                        continue
                     self.all_readings[date] = {
                         "max_temp": max_temp,
                         "min_temp": min_temp,

@@ -16,3 +16,12 @@ class ReportGenerator:
             f"Humidity: {calculations['max_humidity']['humidity']}% on {ReportGenerator.convert_date(calculations['max_humidity']['day'])}",
         ]
         return report
+
+    @staticmethod
+    def generate_weather_report_by_year_and_month(calculations):
+        report = [
+            f"Highest Average: {calculations['highest_avg']['temp']}C",
+            f"Lowest Average: {calculations['lowest_avg']['temp']}C",
+            f"Average Mean Humidity: {calculations['avg_humidity']['humidity']}%",
+        ]
+        return report

@@ -24,6 +24,11 @@ def weather_summary_by_year(year):
 
 @app.route("/weather-summary/<int:year>/<int:month>")
 def weather_summary_by_year_and_month(year, month):
+    calculation = DataCalculator.calculate_weather_by_year_and_month(
+        ALL_DATA, year, month
+    )
+    report = ReportGenerator.generate_weather_report_by_year_and_month(calculation)
+    print(report)
     return f"Viewing Note {year} and {month}"
 
 

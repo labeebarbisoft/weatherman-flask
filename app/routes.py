@@ -1,3 +1,4 @@
+from flask import render_template
 from app import app
 from .data_reader import DataReader
 from .data_calculator import DataCalculator
@@ -11,7 +12,7 @@ ALL_DATA = data_reader.all_readings
 @app.route("/")
 @app.route("/index")
 def index():
-    return "Hello, World!"
+    return render_template("index.html")
 
 
 @app.route("/weather-summary/<int:year>")

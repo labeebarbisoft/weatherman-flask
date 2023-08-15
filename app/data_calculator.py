@@ -61,3 +61,18 @@ class DataCalculator:
             mean_humidities
         )
         return calculations
+
+    @staticmethod
+    def calculate_temperature_charts(data, year, month):
+        calculations = {
+            "month": month,
+            "year": year,
+            "high_temps": [None] * 32,
+            "low_temps": [None] * 32,
+        }
+        for day, day_data in data.items():
+            if day.startswith(str(year) + "-" + str(month)):
+                day_num = list(map(int, day.split("-")))[2]
+                calculations["high_temps"][day_num] = day_data["max_temp"]
+                calculations["low_temps"][day_num] = day_data["min_temp"]
+        return calculations

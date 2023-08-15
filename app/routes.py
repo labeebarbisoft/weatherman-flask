@@ -18,7 +18,8 @@ def index():
 def weather_summary_by_year(year):
     calculation = DataCalculator.calculate_weather_by_year(ALL_DATA, year)
     report = ReportGenerator.generate_weather_report_by_year(calculation)
-    print(report)
+    for row in report:
+        print(row)
     return f"Viewing Note {year}"
 
 
@@ -28,20 +29,24 @@ def weather_summary_by_year_and_month(year, month):
         ALL_DATA, year, month
     )
     report = ReportGenerator.generate_weather_report_by_year_and_month(calculation)
-    print(report)
+    for row in report:
+        print(row)
     return f"Viewing Note {year} and {month}"
 
 
 @app.route("/temperature-charts/<int:year>/<int:month>")
 def temperature_charts(year, month):
-    print("here")
     calculation = DataCalculator.calculate_temperature_charts(ALL_DATA, year, month)
-    print("there")
     report = ReportGenerator.generate_Temperature_chart(calculation)
-    print(report)
+    for row in report:
+        print(row)
     return f"Viewing Note {year} and {month}"
 
 
 @app.route("/combined-temperature-charts/<int:year>/<int:month>")
 def combined_temperature_charts(year, month):
+    calculation = DataCalculator.calculate_temperature_charts(ALL_DATA, year, month)
+    report = ReportGenerator.generate_combined_Temperature_chart(calculation)
+    for row in report:
+        print(row)
     return f"Viewing Note {year} and {month}"
